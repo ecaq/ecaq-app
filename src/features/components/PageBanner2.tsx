@@ -31,24 +31,6 @@ const tiers = [
   },
 ]
 
-const cards = [
-  {
-    name: 'Our Mission',
-    description: "To network and gather together God's people that we might do the works of God.",
-    icon: "",
-  },
-  {
-    name: 'Our Vision',
-    description: "United body serving God's purpose in advancing His Kingdom. <br /> <b>John 17:20-21<b>",
-    icon: "",
-  },
-  {
-    name: 'Our Mandate',
-    description: "ECAQ immediate mandate is to see the manifestation of our dreams - the building of a OneWorshipPlace.",
-    icon: "",
-  },
-]
-
 interface Props {
   imageBannerSrc: string
 }

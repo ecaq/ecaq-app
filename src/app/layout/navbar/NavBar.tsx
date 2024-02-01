@@ -3,6 +3,7 @@ import { HeartIcon, Bars3Icon, ChartPieIcon, ChevronDownIcon, CursorArrowRaysIco
 import { Fragment, useEffect, useRef, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { cn } from "../../../shared/utils/twm-clsx"
+import React from "react"
 
 // https://codesandbox.io/p/sandbox/github/DoctorDerek/headlessui-example-close-popover-dynamically-in-react-hover-flyout-dropdown-menu/tree/main/?file=%2Fsrc%2FApp.js
 
@@ -35,10 +36,11 @@ export default function NavBar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [scroll, setScroll] = useState(false)
 
-    const buttonRef = useRef<HTMLInputElement>();
+//    const buttonRef = React.useRef<HTMLInputElement>(null)
+    const buttonRef = useRef<React.ElementRef<'button'>>(null)
     
-    let headerRef = useRef<React.ElementRef<'div'>>(null)
-    let isInitial = useRef(true)
+    const headerRef = useRef<React.ElementRef<'div'>>(null)
+    const isInitial = useRef(true)
 
     useEffect(() => {
 
@@ -50,7 +52,7 @@ export default function NavBar() {
         }
   console.log("headerRef.current", headerRef.current)
         // destructuring
-        let { top, height } = headerRef.current.getBoundingClientRect()
+        const { top, height } = headerRef.current.getBoundingClientRect()
         console.log("header ref", headerRef.current.getBoundingClientRect())
 
         console.log("top:" + top, "height: " + height)

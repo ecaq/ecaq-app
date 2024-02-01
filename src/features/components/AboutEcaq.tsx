@@ -1,50 +1,8 @@
-import {
-    ArrowPathIcon,
-    CloudArrowUpIcon,
-    Cog6ToothIcon,
-    FingerPrintIcon,
-    LockClosedIcon,
-    ServerIcon,
-  } from '@heroicons/react/20/solid'
- 
   const stats = [
     { name: 'Church Members', value: '143+' },
     { name: 'Ministries', value: '300+' },
     { name: 'Alliance', value: '40' },
     { name: 'Applications', value: 'Unlimited' },
-  ]
-  
-  const features = [
-    {
-      name: 'Push to deploy.',
-      description: 'We are Evangelical Churches Alliance Qatar (ECAQ). A united network of multi-national expatriate communities of evangelical churches in the State of Qatar, called to live and proclaim the Gospel of Jesus Christ. We are a ministry of many tounges and tribes, a diaspora of Christian believers with purposeful work-based migration for the glory of God.',
-      icon: CloudArrowUpIcon,
-    },
-    {
-      name: 'SSL certificates.',
-      description: 'Today, ECAQ is one of the recognized religious organizations in Qatar, accorded with an opportunity to build a church and freedom to worship, within the parameters and respect to the host country. With 93 member-congregations, majority of which are Filipinos, it has Africans, Indians and Nepalese  churches, with combined estimate of 7,000 individual believers of the Lord Jesus Christ.',
-      icon: LockClosedIcon,
-    },
-    {
-      name: 'Simple queues.',
-      description: 'Formed in 2005, it started from the desire of small group of Filipino churches to gather in one place to pray, worship and fellowship. This desire was transformed into a growing and fervent prayer to have a common house for believers.',
-      icon: ArrowPathIcon,
-    },
-    {
-      name: 'Advanced security.',
-      description: 'Iure sed ab. Aperiam optio placeat dolor facere. Officiis pariatur eveniet atque et dolor.',
-      icon: FingerPrintIcon,
-    },
-    {
-      name: 'Powerful API.',
-      description: 'Laudantium tempora sint ut consectetur ratione. Ut illum ut rem numquam fuga delectus.',
-      icon: Cog6ToothIcon,
-    },
-    {
-      name: 'Database backups.',
-      description: 'Culpa dolorem voluptatem velit autem rerum qui et corrupti. Quibusdam quo placeat.',
-      icon: ServerIcon,
-    },
   ]
   
   export default function AboutEcaq() {

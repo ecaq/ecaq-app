@@ -26,10 +26,11 @@ jobs:
       run: touch .env
     - name: Write to .env file
       run: |
-        echo REACT_APP_BASE_API_URL=${{ secrets.REACT_APP_BASE_API_URL }} >> .env
-        echo REACT_APP_TOKEN_USR=${{ secrets.REACT_APP_TOKEN_USR }} >> .env
-        echo REACT_APP_TOKEN_PWD=${{ secrets.REACT_APP_TOKEN_PWD }} >> .env
-        echo REACT_APP_RECAPTCHA_SITEKEY=${{ secrets.REACT_APP_RECAPTCHA_SITEKEY }} >> .env
+        echo VITE_BASE_API_URL=${{ secrets.VITE_BASE_API_URL }} >> .env
+        echo VITE_TOKEN_USR=${{ secrets.VITE_TOKEN_USR }} >> .env
+        echo VITE_TOKEN_PWD=${{ secrets.VITE_TOKEN_PWD }} >> .env
+        echo VITE_RECAPTCHA_SITEKEY=${{ secrets.VITE_RECAPTCHA_SITEKEY }} >> .env
+        echo VITE_GOOGLEMAP_API=${{ secrets.VITE_GOOGLEMAP_API }} >> .env
 
     - run: npm ci
     - run: npm run build --if-present
@@ -40,5 +41,5 @@ jobs:
         server: ${{ secrets.FTP_INTER_HOST }}
         username: ${{ secrets.FTP_WEBMADEIT_USR }}
         password: ${{ secrets.FTP_WEBMADEIT_PWD }}
-        local-dir: ./build/
-        server-dir: ./react-gha/
+        local-dir: ./dist/
+        server-dir: ./ecaq/

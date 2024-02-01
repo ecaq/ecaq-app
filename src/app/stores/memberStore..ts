@@ -6,6 +6,7 @@ export default class MemberStore {
     members: Member[] = []
     selectedMember: Member | undefined = undefined
     loadingInitial = false
+    
 
     constructor() {
         makeAutoObservable(this)
@@ -25,7 +26,7 @@ export default class MemberStore {
             //runInAction(() => {})
                 members.forEach(member => {                
                     //this.setMember(member)
-                    member.joinDate = member.joinDate?.split('T')[0]
+                    // member.joinDate =  member.joinDate?.split('T')[0]
                     this.members.push(member)
                 })                
                       

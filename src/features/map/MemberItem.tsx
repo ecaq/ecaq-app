@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { Member } from '../../app/models/member';
 
 
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(date));
+// const formatDate = (date: Date) =>
+//   new Intl.DateTimeFormat("en", {
+//     day: "numeric",
+//     month: "long",
+//     year: "numeric",
+//   }).format(new Date(date));
 
   interface Props {
     member: Member
@@ -17,7 +17,7 @@ export default function MemberItem({member}: Props) {
     //const {currentCity, deleteCity} = useCities()
     
     // destructure the city props
-    const { cityName, joinDate, id, position } = member
+    const { cityName, id, position } = member
 
     //${id === currentCity.id ? styles["cityItem--active"]:""}
     //styles.cityItem
