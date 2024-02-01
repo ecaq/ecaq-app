@@ -1,0 +1,40 @@
+
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import 'swiper/css/bundle';
+/* @import 'swiper/scss'; */
+/* @import 'swiper/scss/navigation'; */
+/* @import 'swiper/scss/pagination'; */
+/* @import 'swiper/scss/autoplay'; */
+
+.swiper-button-prev {
+    color: white;
+}
+.swiper-button-next {
+    color: white;
+}
+
+
+@font-face {
+    font-family: Sono-Bold;
+    src: url(./assets/fonts/sono/Sono-Bold.ttf) format("truetype");
+}
+@font-face {
+    font-family: Sono-Medium;
+    src: url(./assets/fonts/sono/Sono-Medium.ttf) format("truetype");
+}
+@font-face {
+    font-family: Sono-Regular;
+    src: url(./assets/fonts/sono/Sono-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: Sono-Light;
+    src: url(./assets/fonts/sono/Sono-Light.ttf) format("truetype");
+}
