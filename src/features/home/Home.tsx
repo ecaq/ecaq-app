@@ -1,6 +1,6 @@
 import AboutUs from "../components/AboutUs";
-import MissionVision from "../components/MissionVision";
 import SwiperSlider from "../components/SwiperSlider";
+import SwiperSliderChildProps from "../components/SwiperSliderChildProps";
 import Testimonies from "../components/Testimonies";
 
 export default function Home() {
@@ -8,14 +8,17 @@ export default function Home() {
     <div className="-mt-16">
 
       <SwiperSlider />
-      <MissionVision />
+      {/* <MissionVision /> */}
       <AboutUs />
       {/*
       <About /> 
       <AboutEcaq />       
       */}
       {/* <Statistics /> */}
-      <Testimonies />
+      <SwiperSliderChildProps>
+        <Testimonies />
+        <Testimonies />
+      </SwiperSliderChildProps>
 
 
 

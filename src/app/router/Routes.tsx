@@ -6,6 +6,8 @@ import MapLayout from "../../features/map/MapLayout";
 import Gallery from "../../features/gallery/Gallery";
 import EcaqMissionVision from "../../features/about/EcaqMissionVision";
 import StatementOfFaith from "../../features/about/StatementOfFaith";
+import ContactUs from "../../features/contact/ContactUs";
+import EcaqCore from "../../features/about/EcaqCore";
 
 export const routes: RouteObject[] = [
   {
@@ -25,6 +27,10 @@ export const routes: RouteObject[] = [
         element: <StatementOfFaith />,
       },
       {
+        path: "/ecaq-core",
+        element: <EcaqCore />,
+      },
+      {
         path: "/gallery",
         element: <Gallery />,
       },
@@ -35,6 +41,10 @@ export const routes: RouteObject[] = [
       {
         path: "/map",
         element: <MapLayout />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
       },
     ],
   },

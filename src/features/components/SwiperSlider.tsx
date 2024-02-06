@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import parse from 'html-react-parser';
 
 import "swiper/css";
@@ -14,6 +14,7 @@ import {
 } from "swiper/modules";
 import { IDocuments } from "../../shared/types/IDocument";
 import { Link } from "react-router-dom";
+import { ReactNode } from "react";
 
 
 /*
@@ -99,8 +100,21 @@ const slidess: IDocuments[] = [
   }
 ]
 
+type ButtonProps = {
+  children: ReactNode;  
+}
+const SwiperButtonPrev = ({ children }: ButtonProps) => {
+  const swiper = useSwiper();
+  return <button onClick={() => swiper.slidePrev()}>{children}</button>;
+};
+const SwiperButtonNext = ({ children }: ButtonProps) => {
+  const swiper = useSwiper();
+  return <button onClick={() => swiper.slideNext()}>{children}</button>;
+};
 
 export default function SwiperSlider() {
+  //const swiper = useSwiper();
+  
   return (
     <>
       <Swiper
@@ -119,7 +133,7 @@ export default function SwiperSlider() {
         pagination={{ clickable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
-      >
+      >      
         {slidess &&
           slidess.map((docs) => (
             <SwiperSlide key={docs.name}>
@@ -175,7 +189,17 @@ export default function SwiperSlider() {
                         <Link to={docs.btnUrl} className="bg-[#88bf41] px-4 py-2 rounded-full" target="_blank">
                           {docs.btnLabel} <span aria-hidden="true">&rarr;</span>
                         </Link>
-                     
+                        <br />
+                        <SwiperButtonPrev>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                          </svg>
+                        </SwiperButtonPrev>      
+                        <SwiperButtonNext>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                          </SwiperButtonNext>
                     </div>
                   </div>
                 </div>
