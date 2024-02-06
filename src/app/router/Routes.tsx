@@ -1,13 +1,13 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
-import App from "../layout/App";
-import Home from "../../features/home/Home";
-import MarketPalce from "../../features/market-place/MarketPlace";
-import MapLayout from "../../features/map/MapLayout";
-import Gallery from "../../features/gallery/Gallery";
-import EcaqMissionVision from "../../features/about/EcaqMissionVision";
-import StatementOfFaith from "../../features/about/StatementOfFaith";
-import ContactUs from "../../features/contact/ContactUs";
-import EcaqCore from "../../features/about/EcaqCore";
+import { lazy } from "react";
+
+const App = lazy(() => import("../layout/App"))
+const Home = lazy(() => import("../../features/home/Home"))
+const Gallery = lazy(() => import("../../features/gallery/Gallery"))
+const EcaqMissionVision = lazy(() => import("../../features/about/EcaqMissionVision"))
+const StatementOfFaith = lazy(() => import("../../features/about/StatementOfFaith"))
+const ContactUs = lazy(() => import("../../features/about/StatementOfFaith"))
+const EcaqCore = lazy(() => import("../../features/about/EcaqCore"))
 
 export const routes: RouteObject[] = [
   {
@@ -33,14 +33,6 @@ export const routes: RouteObject[] = [
       {
         path: "/gallery",
         element: <Gallery />,
-      },
-      {
-        path: "/market-place",
-        element: <MarketPalce />,
-      },
-      {
-        path: "/map",
-        element: <MapLayout />,
       },
       {
         path: "/contact-us",
