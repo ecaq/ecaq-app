@@ -86,12 +86,12 @@ export default function NavBar() {
       if (!headerRef.current) {
         return;
       }
-      console.log("headerRef.current", headerRef.current);
+      //console.log("headerRef.current", headerRef.current);
       // destructuring
-      const { top, height } = headerRef.current.getBoundingClientRect();
-      console.log("header ref", headerRef.current.getBoundingClientRect());
+      //const { top, height } = headerRef.current.getBoundingClientRect();
+      //console.log("header ref", headerRef.current.getBoundingClientRect());
 
-      console.log("top:" + top, "height: " + height);
+      //console.log("top:" + top, "height: " + height);
 
       setScroll(window.scrollY > 140);
       // if(top < -80){

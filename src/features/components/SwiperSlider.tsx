@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,7 +15,6 @@ import {
 import { IDocuments } from "../../shared/types/IDocument";
 import { Link } from "react-router-dom";
 import { ReactNode } from "react";
-
 
 /*
 //ECAQ Slides
@@ -76,33 +75,36 @@ const slidess: IDocuments[] = [
 const slidess: IDocuments[] = [
   {
     name: "<p>Become A Global <br /> Friend</p>",
-    description: "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
+    description:
+      "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
     src: "https://worldea.org/wp-content/uploads/2023/04/global-friends-banner-2.jpg",
     btnLabel: "Lear More",
     btnUrl: "https://www.google.com",
-    isExternalLink: true
+    isExternalLink: true,
   },
   {
     name: "What is <br />Evangelicalism?",
-    description: "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
+    description:
+      "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
     src: "https://worldea.org/wp-content/uploads/2024/01/what-is-evangelicalism.jpg",
     btnLabel: "Lear More",
     btnUrl: "",
-    isExternalLink: false
+    isExternalLink: false,
   },
   {
     name: "Love Obey <br /> & Worship",
-    description: "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
+    description:
+      "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
     src: "https://latoyaedwards.net//wp-content/uploads/2018/01/13.png",
     btnLabel: "Lear More",
     btnUrl: "",
-    isExternalLink: false
-  }
-]
+    isExternalLink: false,
+  },
+];
 
 type ButtonProps = {
-  children: ReactNode;  
-}
+  children: ReactNode;
+};
 const SwiperButtonPrev = ({ children }: ButtonProps) => {
   const swiper = useSwiper();
   return <button onClick={() => swiper.slidePrev()}>{children}</button>;
@@ -114,7 +116,7 @@ const SwiperButtonNext = ({ children }: ButtonProps) => {
 
 export default function SwiperSlider() {
   //const swiper = useSwiper();
-  
+
   return (
     <>
       <Swiper
@@ -131,9 +133,9 @@ export default function SwiperSlider() {
         }}
         navigation
         pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
-      >      
+        //onSwiper={(swiper) => console.log(swiper)}
+        //onSlideChange={() => console.log("slide change")}
+      >
         {slidess &&
           slidess.map((docs) => (
             <SwiperSlide key={docs.name}>
@@ -177,29 +179,52 @@ export default function SwiperSlider() {
                       {parse(docs.name)}
                     </h2>
                     <p className="mt-6 text-sm sm:text-lg leading-8 text-appBlack">
-                      {
-                        parse(docs.description)
-                      }
+                      {parse(docs.description)}
                       {/* {docs.description} */}
                     </p>
                   </div>
                   <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
                     <div className="text-base font-semibold leading-7 text-white">
-                      
-                        <Link to={docs.btnUrl} className="bg-[#88bf41] px-4 py-2 rounded-full" target="_blank">
-                          {docs.btnLabel} <span aria-hidden="true">&rarr;</span>
-                        </Link>
-                        <br />
-                        <SwiperButtonPrev>
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                          </svg>
-                        </SwiperButtonPrev>      
-                        <SwiperButtonNext>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                            </svg>
-                          </SwiperButtonNext>
+                      <Link
+                        to={docs.btnUrl}
+                        className="bg-[#88bf41] px-4 py-2 rounded-full"
+                        target="_blank"
+                      >
+                        {docs.btnLabel} <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                      <br />
+                      <SwiperButtonPrev>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15.75 19.5 8.25 12l7.5-7.5"
+                          />
+                        </svg>
+                      </SwiperButtonPrev>
+                      <SwiperButtonNext>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                          />
+                        </svg>
+                      </SwiperButtonNext>
                     </div>
                   </div>
                 </div>

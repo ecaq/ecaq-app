@@ -1,6 +1,5 @@
 import AboutUs from "../components/AboutUs";
 import SwiperSlider from "../components/SwiperSlider";
-import SwiperSliderChildProps from "../components/SwiperSliderChildProps";
 import Testimonies from "../components/Testimonies";
 
 export default function Home() {
@@ -26,10 +25,12 @@ export default function Home() {
           data="http://www.youtube.com/v/6-aVluqleIc?rel=0&loop=1&autoplay=1&showsearch=0&version=3&showinfo=0&modestbranding=1&fs=1"
         ></object>
       </div> */}
-      <SwiperSliderChildProps>
+      
         <Testimonies />
+
+      {/* <SwiperSliderChildProps>
         <Testimonies />
-      </SwiperSliderChildProps>
+      </SwiperSliderChildProps> */}
 
       <div className="mx-auto max-w-7xl pt-16 lg:flex lg:gap-x-16 lg:px-8">
         <main className="px-4 py-16 sm:px-6 lg:flex-auto lg:px-0 lg:py-20"></main>
