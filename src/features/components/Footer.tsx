@@ -1,4 +1,4 @@
-import { PhoneIcon, EnvelopeIcon, HomeIcon } from "@heroicons/react/20/solid";
+import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/20/solid";
 import { SVGProps } from "react";
 import { JSX } from "react/jsx-runtime";
 
