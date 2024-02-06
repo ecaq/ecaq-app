@@ -1,4 +1,4 @@
-import { RouteObject, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 
 const App = lazy(() => import("../layout/App"))
@@ -8,6 +8,8 @@ const EcaqMissionVision = lazy(() => import("../../features/about/EcaqMissionVis
 const StatementOfFaith = lazy(() => import("../../features/about/StatementOfFaith"))
 const ContactUs = lazy(() => import("../../features/about/StatementOfFaith"))
 const EcaqCore = lazy(() => import("../../features/about/EcaqCore"))
+const NotFound = lazy(() => import("../../features/errors/NotFound"))
+const ServerError = lazy(() => import("../../features/errors/ServerError"))
 
 export const routes: RouteObject[] = [
   {
@@ -38,6 +40,15 @@ export const routes: RouteObject[] = [
         path: "/contact-us",
         element: <ContactUs />,
       },
+      {
+          path: 'not-found', element: <NotFound />
+      },
+      {
+          path: 'server-error', element: <ServerError />
+      },
+      {
+          path: '*', element: <Navigate replace to='/not-found' />
+      }
     ],
   },
 ];
