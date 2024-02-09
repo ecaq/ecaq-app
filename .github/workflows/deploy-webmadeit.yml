@@ -42,4 +42,4 @@ jobs:
         username: ${{ secrets.FTP_WEBMADEIT_USR }}
         password: ${{ secrets.FTP_WEBMADEIT_PWD }}
         local-dir: ./dist/
-        server-dir: ./ecaq/
+        server-dir: ./ecaq-app/
