@@ -296,9 +296,12 @@ export default function NavBar() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-md leading-6 text-gray-900">
-            News & Events
-          </a>
+          <NavLink
+            to="/news-update"
+            className="text-md leading-6 text-gray-900"
+          >
+            News Update
+          </NavLink>
           <NavLink to="/gallery" className="text-md leading-6 text-gray-900">
             Gallery
           </NavLink>

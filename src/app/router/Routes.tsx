@@ -1,15 +1,22 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 
-const App = lazy(() => import("../layout/App"))
-const Home = lazy(() => import("../../features/home/Home"))
-const Gallery = lazy(() => import("../../features/gallery/Gallery"))
-const EcaqMissionVision = lazy(() => import("../../features/about/EcaqMissionVision"))
-const StatementOfFaith = lazy(() => import("../../features/about/StatementOfFaith"))
-const ContactUs = lazy(() => import("../../features/contact/ContactUs"))
-const EcaqCore = lazy(() => import("../../features/about/EcaqCore"))
-const NotFound = lazy(() => import("../../features/errors/NotFound"))
-const ServerError = lazy(() => import("../../features/errors/ServerError"))
+const App = lazy(() => import("../layout/App"));
+const Home = lazy(() => import("../../features/home/Home"));
+const EcaqMissionVision = lazy(
+  () => import("../../features/about/EcaqMissionVision")
+);
+const StatementOfFaith = lazy(
+  () => import("../../features/about/StatementOfFaith")
+);
+const NewsUpdate = lazy(() => import("../../features/news/NewsUpdate"));
+const Gallery = lazy(() => import("../../features/gallery/Gallery"));
+const ContactUsVideo = lazy(
+  () => import("../../features/contact/ContactUsVideo")
+);
+const EcaqCore = lazy(() => import("../../features/about/EcaqCore"));
+const NotFound = lazy(() => import("../../features/errors/NotFound"));
+const ServerError = lazy(() => import("../../features/errors/ServerError"));
 
 export const routes: RouteObject[] = [
   {
@@ -33,22 +40,29 @@ export const routes: RouteObject[] = [
         element: <EcaqCore />,
       },
       {
+        path: "/news-update",
+        element: <NewsUpdate />,
+      },
+      {
         path: "/gallery",
         element: <Gallery />,
       },
       {
         path: "/contact-us",
-        element: <ContactUs />,
+        element: <ContactUsVideo />,
       },
       {
-          path: 'not-found', element: <NotFound />
+        path: "not-found",
+        element: <NotFound />,
       },
       {
-          path: 'server-error', element: <ServerError />
+        path: "server-error",
+        element: <ServerError />,
       },
       {
-          path: '*', element: <Navigate replace to='/not-found' />
-      }
+        path: "*",
+        element: <Navigate replace to="/not-found" />,
+      },
     ],
   },
 ];
