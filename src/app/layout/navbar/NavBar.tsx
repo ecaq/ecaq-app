@@ -156,7 +156,7 @@ export default function NavBar() {
     <header
       ref={headerRef}
       className={cn(
-        "relative hover:bg-white inset-x-0 top-0 z-50 border-b-[1px] border-appGreen transition duration-2000 ease-in-out",
+        "relative hover:bg-white inset-x-0 top-0 z-40 border-b-[1px] border-appGreen transition duration-2000 ease-in-out",
         scroll ? "sticky bg-white" : "bg-white/20 "
       )}
     >
@@ -326,15 +326,14 @@ export default function NavBar() {
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div
+            className="flex items-center justify-between"
+            onClick={() => buttonRef.current?.click()}
+          >
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+              <img className="h-8 w-auto" src="" alt="" />
             </Link>
             <button
               type="button"
@@ -404,24 +403,33 @@ export default function NavBar() {
                     </>
                   )}
                 </Disclosure>
-                <NavLink
-                  to="/news-update"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  News Update
-                </NavLink>
-                <NavLink
-                  to="/gallery"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Gallery
-                </NavLink>
-                <NavLink
-                  to="/contact-us"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Contact
-                </NavLink>
+                <Disclosure>
+                  <Disclosure.Button
+                    as="a"
+                    href="/news-update"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    News Update
+                  </Disclosure.Button>
+                </Disclosure>
+                <Disclosure>
+                  <Disclosure.Button
+                    as="a"
+                    href="/gallery"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Gallery
+                  </Disclosure.Button>
+                </Disclosure>
+                <Disclosure>
+                  <Disclosure.Button
+                    as="a"
+                    href="/contact-us"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Contact
+                  </Disclosure.Button>
+                </Disclosure>
               </div>
               <div className="py-6">
                 <a
