@@ -11,91 +11,91 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 const slidess: IDocuments[] = [
   {
-    name: "<p>Become A Global <br /> Friend</p>",
+    name: "<p>NGC</p>",
     description:
       "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/NGC.JPG",
+    src: "/memberlogo/NGC.jpg",
     btnLabel: "Lear More",
     btnUrl: "https://www.google.com",
     isExternalLink: true,
   },
   {
-    name: "What is <br />Evangelicalism?",
+    name: "NCC",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/NCC.jpg",
+    src: "/memberlogo/NCC.jpg",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "Love Obey <br /> & Worship",
+    name: "JR King Church",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/JRKing%20church.png",
+    src: "/memberlogo/JRKing%20church.png",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "<p>Become A Global <br /> Friend</p>",
+    name: "Jesus Christ <br /> Light of the Nation</p>",
     description:
       "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/Jesus%20Christ%20Light%20of%20the%20Nation.png",
+    src: "/memberlogo/Jesus%20Christ%20Light%20of%20the%20Nation.png",
     btnLabel: "Lear More",
     btnUrl: "https://www.google.com",
     isExternalLink: true,
   },
   {
-    name: "What is <br />Evangelicalism?",
+    name: "ICF",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/ICF%20LOGO.jpg",
+    src: "/memberlogo/ICF%20LOGO.jpg",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "Love Obey <br /> & Worship",
+    name: "Great Commission Church",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/Great%20Commission%20Church.png",
+    src: "/memberlogo/Great%20Commission%20Church.png",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "What is <br />Evangelicalism?",
+    name: "VIJF",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/VIJF.png",
+    src: "/memberlogo/VIJF.png",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "Love Obey <br /> & Worship",
+    name: "TLSC",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/TLSC%20logo.png",
+    src: "/memberlogo/TLSC%20logo.png",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "What is <br />Evangelicalism?",
+    name: "TFC2i",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/TFC2i%20Logo.jpg",
+    src: "/memberlogo/TFC2i%20Logo.jpg",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
   {
-    name: "Love Obey <br /> & Worship",
+    name: "JCCM",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://www.ecaq.net/MyAssets/uploads/images/Churches/JCCM.jpg",
+    src: "/memberlogo/JCCM.jpg",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
