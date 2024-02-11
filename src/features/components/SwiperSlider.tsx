@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import parse from "html-react-parser";
 
 import "swiper/css";
@@ -14,7 +14,6 @@ import {
 } from "swiper/modules";
 import { IDocuments } from "../../shared/types/IDocument";
 import { Link } from "react-router-dom";
-import { ReactNode } from "react";
 
 /*
 //ECAQ Slides
@@ -102,28 +101,27 @@ const slidess: IDocuments[] = [
   },
 ];
 
-type ButtonProps = {
-  children: ReactNode;
-};
-const SwiperButtonPrev = ({ children }: ButtonProps) => {
-  const swiper = useSwiper();
-  return <button onClick={() => swiper.slidePrev()}>{children}</button>;
-};
-const SwiperButtonNext = ({ children }: ButtonProps) => {
-  const swiper = useSwiper();
-  return <button onClick={() => swiper.slideNext()}>{children}</button>;
-};
+// type ButtonProps = {
+//   children: ReactNode;
+// };
+// const SwiperButtonPrev = ({ children }: ButtonProps) => {
+//   const swiper = useSwiper();
+//   return <button onClick={() => swiper.slidePrev()}>{children}</button>;
+// };
+// const SwiperButtonNext = ({ children }: ButtonProps) => {
+//   const swiper = useSwiper();
+//   return <button onClick={() => swiper.slideNext()}>{children}</button>;
+// };
 
 export default function SwiperSlider() {
-  //const swiper = useSwiper();
+  // const swiper = useSwiper();
 
   return (
     <>
       <Swiper
+        className="mySwiper"
         // install Swiper modules
         modules={[Autoplay, Navigation, Pagination, A11y, EffectFade]}
-        spaceBetween={50}
-        slidesPerView={1}
         effect="fade"
         fadeEffect={{ crossFade: true }}
         loop={true}
@@ -193,7 +191,7 @@ export default function SwiperSlider() {
                         {docs.btnLabel} <span aria-hidden="true">&rarr;</span>
                       </Link>
                       <br />
-                      <SwiperButtonPrev>
+                      {/* <SwiperButtonPrev>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -224,7 +222,7 @@ export default function SwiperSlider() {
                             d="m8.25 4.5 7.5 7.5-7.5 7.5"
                           />
                         </svg>
-                      </SwiperButtonNext>
+                      </SwiperButtonNext> */}
                     </div>
                   </div>
                 </div>

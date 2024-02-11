@@ -13,10 +13,53 @@
   ```
 */
 
+import { GalleryModel } from "../../app/models/gallery-model";
+import SimpleGallery from "./SimpleGallery";
+import SimpleGalleryNoThumb from "./SimpleGalleryNoThumb";
+
+const galleryModel: GalleryModel[] = [
+  {
+    imageURL:
+      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format",
+    thumbURL:
+      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
+    width: 768,
+    height: 512,
+    isHidden: false,
+  },
+  {
+    imageURL:
+      "https://images.unsplash.com/photo-1614926857083-7be149266cda?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=512&q=80",
+    thumbURL:
+      "https://images.unsplash.com/photo-1614926857083-7be149266cda?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=512&q=80",
+    width: 768,
+    height: 512,
+    isHidden: true,
+  },
+  {
+    imageURL:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
+    thumbURL:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
+    width: 768,
+    height: 512,
+    isHidden: true,
+  },
+];
+
 export default function Gallery() {
   return (
     <div className="bg-gray-100">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div>
+          <SimpleGalleryNoThumb
+            galleryId="my-test-gallery-no-thumb"
+            images={galleryModel}
+          />
+
+          <SimpleGallery galleryId="my-test-gallery" images={galleryModel} />
+        </div>
+        <hr className="my-16" />
         <ul
           role="list"
           className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
