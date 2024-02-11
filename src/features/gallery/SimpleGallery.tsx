@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
-import { Gallery } from "../../app/models/Gallery";
+import { GalleryModel } from "../../app/models/gallery-model";
 
 interface Props {
   galleryId: string;
-  images: Gallery[];
+  images: GalleryModel[];
 }
 
 export default function SimpleGallery({ galleryId, images }: Props) {
@@ -19,9 +19,9 @@ export default function SimpleGallery({ galleryId, images }: Props) {
 
     return () => {
       lightbox.destroy();
-      lightbox = null;
+      lightbox = null!;
     };
-  }, []);
+  }, [galleryId]);
 
   return (
     <>

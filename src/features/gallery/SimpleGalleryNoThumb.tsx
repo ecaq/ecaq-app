@@ -22,7 +22,7 @@ export default function SimpleGalleryNoThumb({ galleryId, images }: Props) {
       lightbox.destroy();
       lightbox = null!;
     };
-  },);
+  },[galleryId]);
 
   return (
     <>
