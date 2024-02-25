@@ -3,7 +3,7 @@ import PageBanner from "../components/PageBanner";
 const posts = [
   {
     id: 1,
-    title: "Ministry thorugh Asian Cup",
+    title: "Asian Cup in Doha",
     href: "#",
     description:
       "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.",

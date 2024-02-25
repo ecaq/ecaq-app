@@ -117,47 +117,6 @@ const slidess: IDocuments[] = [
 export default function SwiperSliderPerView() {
   return (
     <>
-      {/* <div className="mb-4 sm:mb-0 flex items-center justify-between">
-        <div className="">
-          <h1 className="text-lg font-extrabold text-gray-900">
-            Explore Vehicles
-          </h1>
-        </div>
-        <div className="flex">
-          <SwiperButtonPrev>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5 8.25 12l7.5-7.5"
-              />
-            </svg>
-          </SwiperButtonPrev>
-          <SwiperButtonNext>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m8.25 4.5 7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </SwiperButtonNext>
-        </div>
-      </div> */}
       <Swiper
         modules={[Autoplay, Navigation, Pagination, EffectFade]}
         spaceBetween={20}
@@ -188,8 +147,8 @@ export default function SwiperSliderPerView() {
           slidess.map((docs) => (
             <SwiperSlide key={docs.name}>
               <div className="bg-white">
-                <div className="p-8 sm:p-4 group mx-auto auto-rows-fr gap-8 sm:mt-8 lg:mx-0 lg:max-w-none">
-                  <article className="relative isolate flex items-center justify-between overflow-hidden rounded-xl bg-gray-900 px-6 pb-6 pt-48 lg:pt-56">
+                <div className="group mx-auto auto-rows-fr gap-8 lg:mx-0 lg:max-w-none h-72">
+                  <article className="flex justify-center relative isolate overflow-hidden rounded-xl bg-gray-900 h-full">
                     <img
                       src={docs.src}
                       alt=""
@@ -198,30 +157,13 @@ export default function SwiperSliderPerView() {
                     <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-800 via-gray-900/30"></div>
                     <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
 
-                    <div className="flex flex-col justify-end">
-                      <h3 className="text-lg font-semibold leading-6 text-white">
+                    <div className="flex flex-col justify-end text-center my-4">
+                      <h3 className="text-md font-semibold text-gray-50">
                         <a>
                           <span className="absolute inset-0"></span>
                           {parse(docs.name)}
                         </a>
                       </h3>
-                    </div>
-
-                    <div className="mt-3 gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                        />
-                      </svg>
                     </div>
                   </article>
                 </div>

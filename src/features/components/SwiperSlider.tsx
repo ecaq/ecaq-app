@@ -76,7 +76,7 @@ const slidess: IDocuments[] = [
     name: "<p>Become A Global <br /> Friend</p>",
     description:
       "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
-    src: "https://worldea.org/wp-content/uploads/2023/04/global-friends-banner-2.jpg",
+    src: "http://localhost:3001/img1.jpeg",
     btnLabel: "Lear More",
     btnUrl: "https://www.google.com",
     isExternalLink: true,
@@ -85,21 +85,43 @@ const slidess: IDocuments[] = [
     name: "What is <br />Evangelicalism?",
     description:
       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "https://worldea.org/wp-content/uploads/2024/01/what-is-evangelicalism.jpg",
-    btnLabel: "Lear More",
-    btnUrl: "",
-    isExternalLink: false,
-  },
-  {
-    name: "Love Obey <br /> & Worship",
-    description:
-      "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "https://latoyaedwards.net//wp-content/uploads/2018/01/13.png",
+    src: "http://localhost:3001/img4.jpeg",
     btnLabel: "Lear More",
     btnUrl: "",
     isExternalLink: false,
   },
 ];
+// /**
+//  //WORLDEA Slides */
+// const slidess: IDocuments[] = [
+//   {
+//     name: "<p>Become A Global <br /> Friend</p>",
+//     description:
+//       "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
+//     src: "https://worldea.org/wp-content/uploads/2023/04/global-friends-banner-2.jpg",
+//     btnLabel: "Lear More",
+//     btnUrl: "https://www.google.com",
+//     isExternalLink: true,
+//   },
+//   {
+//     name: "What is <br />Evangelicalism?",
+//     description:
+//       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
+//     src: "https://worldea.org/wp-content/uploads/2024/01/what-is-evangelicalism.jpg",
+//     btnLabel: "Lear More",
+//     btnUrl: "",
+//     isExternalLink: false,
+//   },
+//   {
+//     name: "Love Obey <br /> & Worship",
+//     description:
+//       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
+//     src: "https://latoyaedwards.net//wp-content/uploads/2018/01/13.png",
+//     btnLabel: "Lear More",
+//     btnUrl: "",
+//     isExternalLink: false,
+//   },
+// ];
 
 // type ButtonProps = {
 //   children: ReactNode;
@@ -134,10 +156,20 @@ export default function SwiperSlider() {
         //onSwiper={(swiper) => console.log(swiper)}
         //onSlideChange={() => console.log("slide change")}
       >
+        <SwiperSlide>
+          {/* <PageVideoBanner bannerSrc="https://www.youtube.com/embed/6-aVluqleIc?rel=0?version=3&autoplay=1&mute=1&loop=1&controls=0&&showinfo=0" /> */}
+          <div className="aspect-w-16 aspect-h-9 lg:-mt-20">
+            <iframe
+              className=""
+              src="https://www.youtube.com/embed/6-aVluqleIc?rel=0?version=3&autoplay=1&mute=1&loop=1&controls=0&&showinfo=0"
+              allow="autoplay"
+            ></iframe>
+          </div>
+        </SwiperSlide>
         {slidess &&
           slidess.map((docs) => (
             <SwiperSlide key={docs.name}>
-              <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-48">
+              <div className="aspect-w-16 aspect-h-9 lg:-mt-20">
                 <img
                   src={docs.src}
                   alt=""
@@ -171,12 +203,13 @@ export default function SwiperSlider() {
                     }}
                   />
                 </div>
-                <div className="mx-auto max-w-7xl px-12">
-                  <div className="mx-auto max-w-2xl lg:mx-0">
-                    <h2 className="text-3xl font-semibold text-appBlue sm:text-6xl">
+
+                <div className="mx-auto max-w-7xl px-16">
+                  <div className="mx-auto max-w-2xl lg:mx-0 mt-72">
+                    <h2 className="text-3xl font-semibold text-appGreen sm:text-6xl">
                       {parse(docs.name)}
                     </h2>
-                    <p className="mt-6 text-sm sm:text-lg leading-8 text-appBlack">
+                    <p className="mt-6 text-sm sm:text-lg leading-8 text-appWhite">
                       {parse(docs.description)}
                       {/* {docs.description} */}
                     </p>
@@ -185,7 +218,7 @@ export default function SwiperSlider() {
                     <div className="text-base font-semibold leading-7 text-white">
                       <Link
                         to={docs.btnUrl}
-                        className="bg-[#88bf41] px-4 py-2 rounded-full"
+                        className="bg-appBlue px-4 py-2 rounded-full"
                         target="_blank"
                       >
                         {docs.btnLabel} <span aria-hidden="true">&rarr;</span>

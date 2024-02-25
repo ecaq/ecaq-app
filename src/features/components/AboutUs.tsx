@@ -1,7 +1,7 @@
 const stats = [
   { name: "Nationalitites", value: "9" },
-  { name: "Total Number of Members", value: "14,244" },
-  { name: "Total Number of Churches", value: "109" },
+  { name: "Total Number of Members", value: "14,294" },
+  { name: "Total Number of Churches", value: "111" },
   { name: "Alliance", value: "2" },
 ];
 

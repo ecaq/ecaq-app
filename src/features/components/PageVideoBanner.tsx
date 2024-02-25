@@ -4,7 +4,7 @@ interface Props {
 
 export default function PageVideoBanner({ bannerSrc }: Props) {
   return (
-    <div className="aspect-w-16 aspect-h-9 lg:-mt-44">
+    <div className="aspect-w-16 aspect-h-9 lg:-mt-16">
       <iframe className="" src={bannerSrc} allow="autoplay"></iframe>
     </div>
   );

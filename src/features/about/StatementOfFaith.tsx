@@ -15,12 +15,6 @@ export default function StatementOfFaith() {
                 Statement of Faith
               </h1>
               <p className="mt-6 text-xl leading-8">
-                Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget
-                risus enim. Mattis mauris semper sed amet vitae sed turpis id.
-                Id dolor praesent donec est. Odio penatibus risus viverra tellus
-                varius sit neque erat velit. Faucibus commodo massa rhoncus,
-                volutpat. Dignissim sed eget risus enim. Mattis mauris semper
-                sed amet vitae sed turpis id.
               </p>
               <div className="mt-10 max-w-3xl">
                 <ul

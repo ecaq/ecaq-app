@@ -5,55 +5,55 @@ const people = [
     name: "Bishop Beda Robles",
     role: "Chairman",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2022/11/Tanchi.jpg?w=1024&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptr. Celso Camat",
     role: "Vice Chairman",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Udang.jpg?w=378&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptr. Danny dela Torre",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Ramos.jpg?w=378&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptra. Rosana Joven",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Villoria.jpg?resize=300%2C300&ssl=1",
+      "no-profile-pic2.jpg",
   },
   {
     name: "Ptr. Arturo Tanael",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2022/11/Tanchi.jpg?w=1024&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptr. Ariel Arcangel",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Udang.jpg?w=378&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptr. Ben Joven",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Ramos.jpg?w=378&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptr. Delfin Santos",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Villoria.jpg?resize=300%2C300&ssl=1",
+      "no-profile-pic.jpg",
   },
   {
     name: "Ptr. Romeo Plasencia",
     role: "Core",
     imageUrl:
-      "https://i0.wp.com/pcec.org.ph/wp-content/uploads/2023/09/Villoria.jpg?resize=300%2C300&ssl=1",
+      "no-profile-pic.jpg",
   }
 ];
 
