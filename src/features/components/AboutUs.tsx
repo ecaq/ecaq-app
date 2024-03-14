@@ -1,15 +1,26 @@
-const stats = [
-  { name: "Nationalitites", value: "9" },
-  { name: "Total Number of Members", value: "14,294" },
-  { name: "Total Number of Churches", value: "111" },
-  { name: "Alliance", value: "2" },
-];
+import { observer } from "mobx-react-lite";
+import { useStore } from "../../app/stores/store";
+import { useEffect } from "react";
 
-export default function AboutUs() {
+// const stats = [
+//   { name: "Nationalitites", value: "9" },
+//   { name: "Total Number of Members", value: "14,294" },
+//   { name: "Total Number of Churches", value: "111" },
+//   { name: "Alliance", value: "2" },
+// ];
+
+export default observer(function AboutUs() {
+  const { aboutStore } = useStore()
+  const { loadAbout, selectedAbout: abt } = aboutStore
+
+  useEffect(() => {
+    loadAbout("1")
+  }, [loadAbout])
+
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
-        src="bible-bg.jpg"
+        src={abt?.backgroundImage}
         alt=""
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
       />
@@ -44,10 +55,10 @@ export default function AboutUs() {
         <div className="mx-auto max-w-2xl lg:mx-0">
           {/* <h2 className="text-base font-semibold leading-7 text-indigo-400">Everything you need</h2> */}
           <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            About ECAQ
+            {abt?.title}
           </p>
           <p className="mt-2 text-lg leading-8 text-appGreen">
-            A call to build the House of the Lord
+            {abt?.subtitle}
           </p>
         </div>
 
@@ -83,9 +94,53 @@ export default function AboutUs() {
           </div>
         </div>
 
+        
+
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
+
+              <div className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen">
+                <dt className="mt-3 text-base leading-7 text-gray-300">
+                  {abt?.statNationalityText}
+                </dt>
+                <dd className="text-4xl font-bold leading-9 tracking-tight text-white">
+                  {abt?.statNationalityValue}
+                </dd>
+              </div>
+
+              
+              <div className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen">
+                <dt className="mt-3 text-base leading-7 text-gray-300">
+                  {abt?.statMembersText}
+                </dt>
+                <dd className="text-4xl font-bold leading-9 tracking-tight text-white">
+                  {abt?.statMembersyValue}
+                </dd>
+              </div>
+
+              
+              <div className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen">
+                <dt className="mt-3 text-base leading-7 text-gray-300">
+                  {abt?.statChurchesText}
+                </dt>
+                <dd className="text-4xl font-bold leading-9 tracking-tight text-white">
+                  {abt?.statChurchesValue}
+                </dd>
+              </div>
+
+              
+              <div className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen">
+                <dt className="mt-3 text-base leading-7 text-gray-300">
+                  {abt?.statAllianceText}
+                </dt>
+                <dd className="text-4xl font-bold leading-9 tracking-tight text-white">
+                  {abt?.statAlianceValue}
+                </dd>
+              </div>
+
+
+
+            {/* {stats.map((stat) => (
               <div
                 key={stat.name}
                 className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen"
@@ -97,16 +152,16 @@ export default function AboutUs() {
                   {stat.value}
                 </dd>
               </div>
-            ))}
+            ))} */}
           </dl>
           <div className="text-center mt-16">
             <p className="text-gray-50">
-              <span className="text-appGreen font-bold">Source: </span>As of
-              January 2024, taken from ECAQ membership forms.
+              <span className="text-appGreen font-bold">Source: </span>
+              {abt?.source}
             </p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+})

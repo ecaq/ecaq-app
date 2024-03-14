@@ -1,9 +1,24 @@
+import { useEffect } from "react";
+import { useStore } from "../../app/stores/store";
 import AboutUs from "../components/AboutUs";
+import LoadingComponent from "../components/LoadingComponent";
 import SwiperSlider from "../components/SwiperSlider";
 import SwiperSliderPerView from "../components/SwiperSliderPerView";
 import Testimonies from "../components/Testimonies";
+import { observer } from "mobx-react-lite";
 
-export default function Home() {
+export default observer(function Home() {
+  const { homebannerStore } = useStore();
+  const { loadHomeBanners, homeBannerRegistry } = homebannerStore;
+
+  useEffect(() => {
+    if (homeBannerRegistry.size < 1) {
+      loadHomeBanners();
+    }
+  }, [homeBannerRegistry.size, loadHomeBanners]);
+
+  if (homebannerStore.loadingInitial) return <LoadingComponent />;
+
   return (
     <div className="-mt-16">
       <SwiperSlider />
@@ -28,4 +43,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+})

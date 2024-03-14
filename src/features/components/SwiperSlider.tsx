@@ -12,8 +12,9 @@ import {
   Pagination,
   EffectFade,
 } from "swiper/modules";
-import { IDocuments } from "../../shared/types/IDocument";
 import { Link } from "react-router-dom";
+import { useStore } from "../../app/stores/store";
+import { observer } from "mobx-react-lite";
 
 /*
 //ECAQ Slides
@@ -70,27 +71,27 @@ const slidess: IDocuments[] = [
  */
 
 /**
- //WORLDEA Slides */
-const slidess: IDocuments[] = [
-  {
-    name: "<p>Become A Global <br /> Friend</p>",
-    description:
-      "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
-    src: "http://localhost:3001/img1.jpeg",
-    btnLabel: "Lear More",
-    btnUrl: "https://www.google.com",
-    isExternalLink: true,
-  },
-  {
-    name: "What is <br />Evangelicalism?",
-    description:
-      "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
-    src: "http://localhost:3001/img4.jpeg",
-    btnLabel: "Lear More",
-    btnUrl: "",
-    isExternalLink: false,
-  },
-];
+//  //WORLDEA Slides */
+// const slidess: IDocuments[] = [
+//   {
+//     name: "<p>Become A Global <br /> Friend</p>",
+//     description:
+//       "To provide a practical way for pastors, church leaders and laypersons to answer Jesus’ prayer for unity in John 17:21 by becoming part of the global evangelical family, the WEA is inviting you to become a WEA Global Friend.",
+//     src: "http://localhost:3001/img1.jpeg",
+//     btnLabel: "Lear More",
+//     btnUrl: "https://www.google.com",
+//     isExternalLink: true,
+//   },
+//   {
+//     name: "What is <br />Evangelicalism?",
+//     description:
+//       "The World Evangelical Alliance and the Kirby Laing Centre for Public Theology in Cambridge continue to explore the question of what it means to be evangelicals amidst the changing landscape of global Christianity.",
+//     src: "http://localhost:3001/img4.jpeg",
+//     btnLabel: "Lear More",
+//     btnUrl: "",
+//     isExternalLink: false,
+//   },
+// ];
 // /**
 //  //WORLDEA Slides */
 // const slidess: IDocuments[] = [
@@ -135,8 +136,9 @@ const slidess: IDocuments[] = [
 //   return <button onClick={() => swiper.slideNext()}>{children}</button>;
 // };
 
-export default function SwiperSlider() {
-  // const swiper = useSwiper();
+export default observer(function SwiperSlider() {
+  const { homebannerStore } = useStore();
+  const { getHomeBanners } = homebannerStore;
 
   return (
     <>
@@ -156,8 +158,7 @@ export default function SwiperSlider() {
         //onSwiper={(swiper) => console.log(swiper)}
         //onSlideChange={() => console.log("slide change")}
       >
-        <SwiperSlide>
-          {/* <PageVideoBanner bannerSrc="https://www.youtube.com/embed/6-aVluqleIc?rel=0?version=3&autoplay=1&mute=1&loop=1&controls=0&&showinfo=0" /> */}
+        {/* <SwiperSlide>
           <div className="aspect-w-16 aspect-h-9 lg:-mt-20">
             <iframe
               className=""
@@ -165,13 +166,27 @@ export default function SwiperSlider() {
               allow="autoplay"
             ></iframe>
           </div>
-        </SwiperSlide>
-        {slidess &&
-          slidess.map((docs) => (
-            <SwiperSlide key={docs.name}>
+        </SwiperSlide> */}
+
+
+          {getHomeBanners &&
+            getHomeBanners.map((docs) => {
+            if (docs.isVideo) {
+              return <SwiperSlide>
+                  <div className="aspect-w-16 aspect-h-9 lg:-mt-20">
+                    <iframe
+                      className=""
+                      src={docs.videoUrl}
+                      allow="autoplay"
+                    ></iframe>
+                  </div>
+                </SwiperSlide>
+            }
+    
+              return <SwiperSlide key={docs.name}>
               <div className="aspect-w-16 aspect-h-9 lg:-mt-20">
                 <img
-                  src={docs.src}
+                  src={docs.imageDesktop}
                   alt=""
                   className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
                 />
@@ -207,62 +222,59 @@ export default function SwiperSlider() {
                 <div className="mx-auto max-w-7xl px-16">
                   <div className="mx-auto max-w-2xl lg:mx-0 mt-72">
                     <h2 className="text-3xl font-semibold text-appGreen sm:text-6xl">
-                      {parse(docs.name)}
+                      {parse(docs.desc)}
                     </h2>
-                    <p className="mt-6 text-sm sm:text-lg leading-8 text-appWhite">
-                      {parse(docs.description)}
-                      {/* {docs.description} */}
-                    </p>
                   </div>
-                  <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-                    <div className="text-base font-semibold leading-7 text-white">
+                  {docs.buttonText.trim().length !== 0 &&
+
+                    <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
                       <Link
-                        to={docs.btnUrl}
-                        className="bg-appBlue px-4 py-2 rounded-full"
-                        target="_blank"
+                        to={docs.buttonUrl}
+                        className="text-white bg-appBlue hover:bg-indigo-900 px-4 py-3 rounded-full"
+                        target={docs.buttonUrlExternal ? '_blank':'_self'}
                       >
-                        {docs.btnLabel} <span aria-hidden="true">&rarr;</span>
+                        {docs.buttonText} <span aria-hidden="true">&rarr;</span>
                       </Link>
                       <br />
                       {/* <SwiperButtonPrev>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15.75 19.5 8.25 12l7.5-7.5"
-                          />
-                        </svg>
-                      </SwiperButtonPrev>
-                      <SwiperButtonNext>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                          />
-                        </svg>
-                      </SwiperButtonNext> */}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M15.75 19.5 8.25 12l7.5-7.5"
+                            />
+                          </svg>
+                        </SwiperButtonPrev>
+                        <SwiperButtonNext>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                            />
+                          </svg>
+                        </SwiperButtonNext> */}
                     </div>
-                  </div>
+                  }
                 </div>
               </div>
             </SwiperSlide>
-          ))}
+          })}
       </Swiper>
     </>
   );
-}
+});

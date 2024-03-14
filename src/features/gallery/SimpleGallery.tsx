@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
-import { GalleryModel } from "../../app/models/gallery-model";
+import { GalleryModel } from "../../app/models/gellery-model";
 
 interface Props {
   galleryId: string;
@@ -33,9 +33,9 @@ export default function SimpleGallery({ galleryId, images }: Props) {
         >
           {images.map((image, index) => (
             <a
-              href={image.imageURL}
-              data-pswp-width={image.width}
-              data-pswp-height={image.height}
+              href={image.imageUrl}
+              data-pswp-width="768"
+              data-pswp-height="512"
               key={galleryId + "-" + index}
               target="_blank"
               rel="noreferrer"
@@ -43,7 +43,7 @@ export default function SimpleGallery({ galleryId, images }: Props) {
               <li className="relative">
                 <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
                   <img
-                    src={image.thumbURL}
+                    src={image.imageUrl}
                     alt=""
                     className="pointer-events-none object-cover group-hover:opacity-75"
                   />

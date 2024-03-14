@@ -2,14 +2,20 @@ import { useEffect } from "react";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
 import { cn } from "../../shared/utils/twm-clsx";
-import { GalleryModel } from "../../app/models/gallery-model";
 
 interface Props {
   galleryId: string;
-  images: GalleryModel[];
+  path: string;
+  thumbnail: string;
+  images: string[] | undefined;
 }
 
-export default function SimpleGalleryNoThumb({ galleryId, images }: Props) {
+export default function SimpleGalleryNoThumb({
+  galleryId,
+  path,
+  thumbnail,
+  images,
+}: Props) {
   useEffect(() => {
     let lightbox = new PhotoSwipeLightbox({
       gallery: "#" + galleryId,
@@ -22,30 +28,45 @@ export default function SimpleGalleryNoThumb({ galleryId, images }: Props) {
       lightbox.destroy();
       lightbox = null!;
     };
-  },[galleryId]);
+  }, [galleryId]);
 
   return (
     <>
-      <h1 className="mt-16 font-bold text-lg">Without Thumbnail</h1>
-      <div className="pswp-gallery mt-2" id={galleryId}>
-        {images.map((image, index) => (
-          <a
-            href={image.imageURL}
-            data-pswp-width={image.width}
-            data-pswp-height={image.height}
-            key={galleryId + "-" + index}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(
-              "relative hover:bg-white inset-x-0 top-0 z-40 border-b-[1px] border-appGreen transition duration-2000 ease-in-out",
-              image.isHidden ? "hidden" : ""
-            )}
-          >
-            <span className="pointer-events-none text-sm font-medium text-gray-50 px-3 py-2 bg-appGreen rounded-md">
-              Images ({images.length})
-            </span>
-          </a>
-        ))}
+      <div className="relative group mx-auto auto-rows-fr gap-8 lg:mx-0 lg:max-w-none h-72">
+        <article className="flex justify-center relative isolate overflow-hidden rounded-xl bg-gray-900 h-full">
+          <img
+            src={thumbnail}
+            alt=""
+            className="absolute inset-0 -z-10 h-full w-full"
+          />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-800 via-gray-900/30"></div>
+          <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+          <div className="flex flex-col justify-end text-center my-4">
+            <h3 className="text-md font-semibold text-gray-50">
+              <a>
+                <span className="absolute inset-0"></span>
+                Images ({images?.length}) FIFA World Cup Sponsored By HIA
+              </a>
+            </h3>
+          </div>
+        </article>
+        <div className="pswp-gallery" id={galleryId}>
+          {images?.map((image, index) => (
+            <a
+              href={path + image}
+              data-pswp-width="768"
+              data-pswp-height="512"
+              key={galleryId + "-" + index}
+              target="_blank"
+              rel={`noreferrer - ${index}`}
+              className={cn(
+                "absolute inset-0 border-b-[1px] border-appGreen transition duration-2000 ease-in-out",
+                index !== 0 ? "hidden" : ""
+              )}
+            ></a>
+          ))}
+        </div>
       </div>
     </>
   );
