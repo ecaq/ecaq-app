@@ -5,6 +5,7 @@ import { cn } from "../../shared/utils/twm-clsx";
 
 interface Props {
   galleryId: string;
+  albumName: string;
   path: string;
   thumbnail: string;
   images: string[] | undefined;
@@ -12,6 +13,7 @@ interface Props {
 
 export default function SimpleGalleryNoThumb({
   galleryId,
+  albumName,
   path,
   thumbnail,
   images,
@@ -45,9 +47,13 @@ export default function SimpleGalleryNoThumb({
           <div className="flex flex-col justify-end text-center my-4">
             <h3 className="text-md font-semibold text-gray-50">
               <a>
-                <span className="absolute inset-0"></span>
-                Images ({images?.length}) FIFA World Cup Sponsored By HIA
+                <span></span>
+                <div className="flex">
+                  <p>{albumName}</p>
+                  <br />
+                </div>
               </a>
+              <span className="text-xs">Images ({images?.length})</span>
             </h3>
           </div>
         </article>

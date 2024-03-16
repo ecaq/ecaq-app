@@ -22,8 +22,8 @@ export default observer(function Home() {
   return (
     <div className="-mt-16">
       <SwiperSlider />
-      {/* <MissionVision /> */}
-      <AboutUs />
+        {/* <MissionVision /> */}
+        <AboutUs />
       {/*
       <About /> 
       <AboutEcaq />       

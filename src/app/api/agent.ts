@@ -100,7 +100,7 @@ const Core = {
 };
 
 const Gallery = {
-  list: () => requests.get<GalleryModel[]>("/gallery"),  
+  list: () => requests.get<GalleryModel[]>("/gallery"),
   listWithImages: () => requests.get<GalleryModel[]>("/gallery/with-images"),
   details: (id: number) => requests.get<GalleryModel>(`/gallery/${id}`),
   // create: (activity: Activity) => requests.post<void>('/activities', activity),
@@ -123,7 +123,7 @@ const agent = {
   About,
   Core,
   Gallery,
-  Members
+  Members,
 };
 
 export default agent;

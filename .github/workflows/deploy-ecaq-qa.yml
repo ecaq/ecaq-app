@@ -1,0 +1,45 @@
+name: Deploy to Ecaq
+
+on: workflow_dispatch
+#  push:
+#    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Create .env file
+      run: touch .env
+    - name: Write to .env file
+      run: |
+        echo VITE_BASE_API_URL=${{ secrets.VITE_BASE_API_URL }} >> .env
+        echo VITE_TOKEN_USR=${{ secrets.VITE_TOKEN_USR }} >> .env
+        echo VITE_TOKEN_PWD=${{ secrets.VITE_TOKEN_PWD }} >> .env
+        echo VITE_RECAPTCHA_SITEKEY=${{ secrets.VITE_RECAPTCHA_SITEKEY }} >> .env
+        echo VITE_GOOGLEMAP_API=${{ secrets.VITE_GOOGLEMAP_API }} >> .env
+
+    - run: npm ci
+    - run: npm run build --if-present
+
+    - name: Sync files to sharedhosting
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_ECAQ_HOST }}
+        username: ${{ secrets.FTP_ECAQ_USR }}
+        password: ${{ secrets.FTP_ECAQ_PWD }}
+        local-dir: ./dist/
+        server-dir: ./qa/
