@@ -18,7 +18,9 @@ export default class GalleryStore {
 
   // this is Computed Property
   get getGalleries() {
-    return Array.from(this.galleryRegistry.values());
+    return Array.from(this.galleryRegistry.values()).filter(
+      (i) => i.isActive === true
+    );
   }
 
   loadGalleries = async () => {

@@ -5,7 +5,7 @@ import { EcaqCoreModel } from "../models/ecaq-core-model";
 
 export default class EcaqCoreStore {
   ecaqCoreRegistry = new Map<string, EcaqCoreModel>();
-  selectedEcaqCore: EcaqCoreModel | undefined = undefined
+  selectedEcaqCore: EcaqCoreModel | undefined = undefined;
   loadingInitial = false;
 
   constructor() {
@@ -18,14 +18,21 @@ export default class EcaqCoreStore {
 
   // this is Computed Property
   get getCores() {
-    return Array.from(this.ecaqCoreRegistry.values());
+    return Array.from(this.ecaqCoreRegistry.values()).filter(
+      (i) => i.isActive === true
+    );
   }
 
   loadEcaqCores = async () => {
     this.setLoadingInitial(true);
-    console.log("loadInit call", this.loadingInitial, "sz : ", this.ecaqCoreRegistry.size)
+    console.log(
+      "loadInit call",
+      this.loadingInitial,
+      "sz : ",
+      this.ecaqCoreRegistry.size
+    );
     try {
-      const cores = await agent.Core.list()
+      const cores = await agent.Core.list();
       console.log("load-banners call", cores);
       //runInAction(() => {})
 
@@ -41,35 +48,30 @@ export default class EcaqCoreStore {
       //runInAction(() => {})
       this.setLoadingInitial(false);
     }
-  }
+  };
 
-  
   loadEcaqCore = async (id: string = "1") => {
-    let core = this.getCore(id)
-    if(core) {
-        this.selectedEcaqCore = core
-        return core
+    let core = this.getCore(id);
+    if (core) {
+      this.selectedEcaqCore = core;
+      return core;
     } else {
-        try {
-            core = await agent.Core.details(+id)
-            this.setCore(core)
-            runInAction(() => this.selectedEcaqCore = core)                            
-            this.setLoadingInitial(false)
-            return core
-        } catch (error) {
-            console.log(error)
-            //runInAction(() => {})
-            this.setLoadingInitial(false)            
-        }
+      try {
+        core = await agent.Core.details(+id);
+        this.setCore(core);
+        runInAction(() => (this.selectedEcaqCore = core));
+        this.setLoadingInitial(false);
+        return core;
+      } catch (error) {
+        console.log(error);
+        //runInAction(() => {})
+        this.setLoadingInitial(false);
+      }
     }
-
-}
-
+  };
 
   private setCore = (abt: EcaqCoreModel) => {
-    abt.imageUrl = `${import.meta.env.VITE_BASE_URL}${
-      abt.imageUrl
-    }`
+    abt.imageUrl = `${import.meta.env.VITE_BASE_URL}${abt.imageUrl}`;
     this.ecaqCoreRegistry.set(String(abt.id), abt);
   };
 

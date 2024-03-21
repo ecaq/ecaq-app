@@ -18,7 +18,9 @@ export default class HomeBannerStore {
 
   // this is Computed Property
   get getHomeBanners() {
-    return Array.from(this.homeBannerRegistry.values());
+    return Array.from(this.homeBannerRegistry.values()).filter(
+      (i) => i.isActive === true
+    );
   }
 
   loadHomeBanners = async () => {

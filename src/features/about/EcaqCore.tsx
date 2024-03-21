@@ -89,7 +89,7 @@ export default observer(function EcaqCore() {
           {getCores.map((person) => (
             <li key={person.name} className="text-center">
               <img
-                className="aspect-[14/13] w-full rounded-2xl object-cover"
+                className="w-full rounded-2xl object-cover"
                 src={person.imageUrl}
                 alt=""
               />

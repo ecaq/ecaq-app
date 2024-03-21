@@ -1,4 +1,4 @@
-name: Deploy to Ecaq
+name: Deploy to Ecaq QA
 
 on: workflow_dispatch
 #  push:

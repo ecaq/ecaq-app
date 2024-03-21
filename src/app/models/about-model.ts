@@ -2,7 +2,8 @@ import { BaseEntity } from "./base-entity";
 export interface AboutModel extends BaseEntity {
     title: string;
     subtitle: string;
-    desc: string;
+    desc: string;    
+    desc2: string;
     statNationalityText: string;
     statNationalityValue: string;
     statMembersText: string;
