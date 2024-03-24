@@ -12,19 +12,17 @@
   }
   ```
 */
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  GlobeAsiaAustraliaIcon,
-} from "@heroicons/react/20/solid";
+import { GlobeAsiaAustraliaIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { cn } from "../../shared/utils/twm-clsx";
+import { EnvelopeIcon } from "@heroicons/react/16/solid";
 
 const product = {
-  name: "ECAQ International Alliance and official member of...",
+  name: "Partnership with Intercessors",
   desc: "",
   imageSrc:
-    "https://visionedgemarketing.com/wp-content/uploads/2007/02/krakenimages-Y5bvRlcCx8k-unsplash-200x300.jpg",
+    "https://www.24-7pressrelease.com/assets/attachments/048/press_release_distribution_0483348_167728.jpg",
   imageAlt:
     "Interior of light green canvas bag with padded laptop sleeve and internal organization pouch.",
   sizes: [
@@ -41,6 +39,16 @@ const product = {
   ],
 };
 
+const plans = [
+  {
+    name: "Elders of the City Gate",
+    ram: "11223344",
+    cpus: "admin@email.com",
+    disk: "160 GB SSD disk",
+    price: "$40",
+  },
+];
+
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ')
 // }
@@ -50,9 +58,8 @@ interface Props {
   clickHandler: () => void;
 }
 
-export default function TW({ isCollapse, clickHandler }: Props) {
+export default function TWIntercessors({ isCollapse, clickHandler }: Props) {
   //const [open, setOpen] = useState(isCollapse);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
 
   //   function setCollapse(){
   //     isCollapse = true
@@ -115,11 +122,65 @@ export default function TW({ isCollapse, clickHandler }: Props) {
 
                       <section
                         aria-labelledby="information-heading"
-                        className="mt-1"
+                        className="mt-4"
                       >
                         <h3 id="information-heading" className="sr-only">
                           Product information
                         </h3>
+
+                        <RadioGroup>
+                          <RadioGroup.Label className="sr-only">
+                            Server size
+                          </RadioGroup.Label>
+                          <div className="space-y-4">
+                            {plans.map((plan) => (
+                              <RadioGroup.Option
+                                key={plan.name}
+                                value={plan}
+                                className={cn("relative block cursor-pointer rounded-lg border bg-white px-6 py-4 shadow-sm focus:outline-none sm:flex sm:justify-between"
+                                  )
+                                }
+                              >
+                                                                  <>
+                                    <span className="flex items-center">
+                                      <span className="flex flex-col text-sm">
+                                        <RadioGroup.Label
+                                          as="span"
+                                          className="font-medium text-gray-900 text-lg"
+                                        >
+                                          {plan.name}
+                                        </RadioGroup.Label>
+                                        <RadioGroup.Description
+                                          as="span"
+                                          className="flex text-gray-500"
+                                        >
+                                          <GlobeAsiaAustraliaIcon
+                                            className="h-5 w-5 mr-2 text-appGreen"
+                                            aria-hidden="true"
+                                          />
+                                          <span className="block sm:inline">
+                                            {plan.ram}
+                                          </span>
+                                        </RadioGroup.Description>
+                                        <RadioGroup.Description
+                                          as="span"
+                                          className="flex text-gray-500"
+                                        >
+                                          <EnvelopeIcon
+                                            className="h-5 w-5 mr-2 text-appGreen"
+                                            aria-hidden="true"
+                                          />
+                                          <span className="block sm:inline">
+                                            {plan.cpus}
+                                          </span>
+                                        </RadioGroup.Description>
+                                      </span>
+                                    </span>
+                                  </>
+                              </RadioGroup.Option>
+                            ))}
+                          </div>
+                        </RadioGroup>
 
                         <div className="">
                           <p className=" text-gray-500">{product.desc}</p>
@@ -133,59 +194,6 @@ export default function TW({ isCollapse, clickHandler }: Props) {
                         <h3 id="options-heading" className="sr-only">
                           Product options
                         </h3>
-
-                        <form>
-                          <div className="">
-                            {/* Size selector */}
-                            <RadioGroup
-                              value={selectedSize}
-                              onChange={setSelectedSize}
-                            >
-                              {/* <RadioGroup.Label className="block text-sm font-medium text-gray-700">
-                                Size
-                              </RadioGroup.Label> */}
-                              <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                {product.sizes.map((size) => (
-                                  <RadioGroup.Option
-                                    as="div"
-                                    key={size.name}
-                                    value={size}
-                                    className={({ active }) =>
-                                      cn(
-                                        active ? "" : "",
-                                        "relative block cursor-pointer rounded-lg border border-gray-300 p-4 focus:outline-none"
-                                      )
-                                    }
-                                  >
-                                      <>
-                                        <a
-                                          href={`https://${size.website}`}
-                                          target="_blank"
-                                        >
-                                          <RadioGroup.Label
-                                            as="p"
-                                            className="text-base font-medium text-gray-900"
-                                          >
-                                            {size.name}
-                                          </RadioGroup.Label>
-                                          <RadioGroup.Description
-                                            as="p"
-                                            className="flex items-center mt-1 text-sm text-gray-500"
-                                          >
-                                            <GlobeAsiaAustraliaIcon
-                                              className="h-5 w-5 mr-2 text-appGreen"
-                                              aria-hidden="true"
-                                            />
-                                            {size.website}
-                                          </RadioGroup.Description>
-                                        </a>
-                                      </>
-                                  </RadioGroup.Option>
-                                ))}
-                              </div>
-                            </RadioGroup>
-                          </div>
-                        </form>
                       </section>
                     </div>
                   </div>

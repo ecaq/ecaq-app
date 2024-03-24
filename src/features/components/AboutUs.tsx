@@ -3,6 +3,7 @@ import { useStore } from "../../app/stores/store";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import TW from "../tw/TW";
+import TWIntercessors from "../tw/TWIntercessors";
 
 // const stats = [
 //   { name: "Nationalitites", value: "9" },
@@ -15,10 +16,14 @@ export default observer(function AboutUs() {
   const { aboutStore } = useStore();
   const { loadAbout, selectedAbout: abt } = aboutStore;
   const [open, setOpen] = useState(false);
+  const [openInter, setOpenInter] = useState(false);
 
   function setAlliance() {
     console.log("opn :", open);
     setOpen((open) => (open = !open));
+  }
+  function setIntercessor() {
+    setOpenInter((openInter) => (openInter = !openInter));
   }
 
   useEffect(() => {
@@ -77,7 +82,7 @@ export default observer(function AboutUs() {
           </div>
 
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-            <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+            <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-5">
               <div className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen">
                 <dt className="mt-3 text-base leading-7 text-gray-300">
                   {abt?.statNationalityText}
@@ -128,6 +133,30 @@ export default observer(function AboutUs() {
                 </div>
               </a>
 
+              
+              <a onClick={() => setIntercessor()} className="cursor-pointer">
+                <div className="flex flex-col-reverse px-4 py-1 border-l-[1px] border-appGreen">
+                  <dt className="flex items-center mt-3 text-base leading-7 text-gray-300">
+                    Partnership with Intercessors
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="mt-1 ml-2 w-5 h-5 text-appGreen"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </dt>
+                  <dd className="text-4xl font-bold leading-9 tracking-tight text-white">
+                    {abt?.statAlianceValue}
+                  </dd>
+                </div>
+              </a>
+
               {/* {stats.map((stat) => (
                 <div
                   key={stat.name}
@@ -151,7 +180,7 @@ export default observer(function AboutUs() {
           </div>
         </div>
       </div>
-
+      <TWIntercessors isCollapse={openInter} clickHandler={setIntercessor} />
       <TW isCollapse={open} clickHandler={setAlliance} />
     </>
   );
