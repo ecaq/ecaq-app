@@ -1,10 +1,11 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { Member } from "../models/member";
 import { router } from "../router/Routes";
 import { HomeBanner } from "../models/home-banner";
 import { AboutModel } from "../models/about-model";
 import { EcaqCoreModel } from "../models/ecaq-core-model";
 import { GalleryModel } from "../models/gellery-model";
+import { AllianceModel } from "../models/alliance-model";
+import { MemberModel } from "../models/member-model";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -17,6 +18,7 @@ axios.defaults.baseURL = `${import.meta.env.VITE_BASE_API_URL}`;
 axios.interceptors.response.use(
   async (response) => {
     await sleep(1000);
+    console.log('server error : ', response)
     return response;
   },
   (error: AxiosError) => {
@@ -54,6 +56,7 @@ axios.interceptors.response.use(
       case 500:
         console.log("server error");
         // store.commonStore.setServerError(data)
+        console.log('server error : ', data)
         router.navigate("/server-error");
         break;
     }
@@ -109,9 +112,18 @@ const Gallery = {
   // delete: (id: string) => axios.delete<void>(`/activities/${id}`)
 };
 
-const Members = {
-  list: () => requests.get<Member[]>("/members"),
-  details: (id: number) => requests.get<Member>(`/member/${id}`),
+const Alliance = {
+  list: () => requests.get<AllianceModel[]>("/alliance"),  
+  details: (id: number) => requests.get<AllianceModel>(`/alliance/${id}`),
+  // create: (activity: Activity) => requests.post<void>('/activities', activity),
+  // update: (activity: Activity) => requests.put<void>(`/activities/${activity.id}`, activity),
+  // //delete: (id: string) => axios.delete<void>(`/activities/${id}`)
+  // delete: (id: string) => axios.delete<void>(`/activities/${id}`)
+};
+
+const Member = {
+  list: () => requests.get<MemberModel[]>("/members"),
+  details: (id: number) => requests.get<MemberModel>(`/member/${id}`),
   // create: (activity: Activity) => requests.post<void>('/activities', activity),
   // update: (activity: Activity) => requests.put<void>(`/activities/${activity.id}`, activity),
   // //delete: (id: string) => axios.delete<void>(`/activities/${id}`)
@@ -123,7 +135,8 @@ const agent = {
   About,
   Core,
   Gallery,
-  Members,
+  Alliance,
+  Member,
 };
 
 export default agent;

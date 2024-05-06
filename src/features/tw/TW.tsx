@@ -12,54 +12,27 @@
   }
   ```
 */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   GlobeAsiaAustraliaIcon,
 } from "@heroicons/react/20/solid";
 import { cn } from "../../shared/utils/twm-clsx";
-
-const product = {
-  name: "ECAQ International Alliance and official member of...",
-  desc: "",
-  imageSrc:
-    "https://visionedgemarketing.com/wp-content/uploads/2007/02/krakenimages-Y5bvRlcCx8k-unsplash-200x300.jpg",
-  imageAlt:
-    "Interior of light green canvas bag with padded laptop sleeve and internal organization pouch.",
-  sizes: [
-    {
-      name: "WEA",
-      website: "www.worldea.org",
-      description: "Perfect for a reasonable amount of snacks.",
-    },
-    {
-      name: "PCEC",
-      website: "www.pcec.org.ph",
-      description: "Enough room for a serious amount of snacks.",
-    },
-  ],
-};
-
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(' ')
-// }
+import { observer } from "mobx-react-lite";
+import { useStore } from "../../app/stores/store";
 
 interface Props {
   isCollapse: boolean;
   clickHandler: () => void;
 }
 
-export default function TW({ isCollapse, clickHandler }: Props) {
-  //const [open, setOpen] = useState(isCollapse);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
-
-  //   function setCollapse(){
-  //     isCollapse = true
-  //   }
-  //   useEffect(()=>{
-  //     setCollapse()
-  //   }, [setCollapse])
+export default observer(function TW({ isCollapse, clickHandler }: Props) {
+  const { allianceStore } = useStore()
+  const { loadAlliance, selectedAlliance: alliance } = allianceStore;
+  useEffect(() => {
+    loadAlliance()
+  }, [loadAlliance])
 
   return (
     <Transition.Root show={isCollapse} as={Fragment}>
@@ -91,7 +64,7 @@ export default function TW({ isCollapse, clickHandler }: Props) {
                 <div className="relative flex w-full items-center rounded-md overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <button
                     type="button"
-                    className="hidden absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
+                    className="hidden absolute right-4 to?p-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
                     onClick={() => clickHandler}
                   >
                     <span className="sr-only">Close</span>
@@ -102,15 +75,15 @@ export default function TW({ isCollapse, clickHandler }: Props) {
                     <div className="sm:col-span-4 lg:col-span-5">
                       <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100">
                         <img
-                          src={product.imageSrc}
-                          alt={product.imageAlt}
+                          src={alliance?.imageUrl}
+                          alt=""
                           className="object-cover object-center"
                         />
                       </div>
                     </div>
                     <div className="sm:col-span-8 lg:col-span-7">
                       <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                        {product.name}
+                        {alliance?.title}
                       </h2>
 
                       <section
@@ -122,7 +95,7 @@ export default function TW({ isCollapse, clickHandler }: Props) {
                         </h3>
 
                         <div className="">
-                          <p className=" text-gray-500">{product.desc}</p>
+                          <p className=" text-gray-500">{alliance?.subtitle}</p>
                         </div>
                       </section>
 
@@ -133,59 +106,60 @@ export default function TW({ isCollapse, clickHandler }: Props) {
                         <h3 id="options-heading" className="sr-only">
                           Product options
                         </h3>
+                        { 
 
-                        <form>
-                          <div className="">
-                            {/* Size selector */}
-                            <RadioGroup
-                              value={selectedSize}
-                              onChange={setSelectedSize}
-                            >
-                              {/* <RadioGroup.Label className="block text-sm font-medium text-gray-700">
-                                Size
-                              </RadioGroup.Label> */}
-                              <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                {product.sizes.map((size) => (
-                                  <RadioGroup.Option
-                                    as="div"
-                                    key={size.name}
-                                    value={size}
-                                    className={({ active }) =>
-                                      cn(
-                                        active ? "" : "",
-                                        "relative block cursor-pointer rounded-lg border border-gray-300 p-4 focus:outline-none"
-                                      )
-                                    }
-                                  >
-                                      <>
-                                        <a
-                                          href={`https://${size.website}`}
-                                          target="_blank"
-                                        >
-                                          <RadioGroup.Label
-                                            as="p"
-                                            className="text-base font-medium text-gray-900"
+                       
+                          <form>
+                            <div className="">
+                              {/* Size selector */}
+                              <RadioGroup>
+                                {/* <RadioGroup.Label className="block text-sm font-medium text-gray-700">
+                                  Size
+                                </RadioGroup.Label> */}
+                                <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                  {alliance?.allianceCollectionModels.map((size) => (
+                                    <RadioGroup.Option
+                                      as="div"
+                                      key={size.name}
+                                      value={size}
+                                      className={({ active }) =>
+                                        cn(
+                                          active ? "" : "",
+                                          "relative block cursor-pointer rounded-lg border border-gray-300 p-4 focus:outline-none"
+                                        )
+                                      }
+                                    >
+                                        <>
+                                          <a
+                                            href={`https://${size.website}`}
+                                            target="_blank"
                                           >
-                                            {size.name}
-                                          </RadioGroup.Label>
-                                          <RadioGroup.Description
-                                            as="p"
-                                            className="flex items-center mt-1 text-sm text-gray-500"
-                                          >
-                                            <GlobeAsiaAustraliaIcon
-                                              className="h-5 w-5 mr-2 text-appGreen"
-                                              aria-hidden="true"
-                                            />
-                                            {size.website}
-                                          </RadioGroup.Description>
-                                        </a>
-                                      </>
-                                  </RadioGroup.Option>
-                                ))}
-                              </div>
-                            </RadioGroup>
-                          </div>
-                        </form>
+                                            <RadioGroup.Label
+                                              as="p"
+                                              className="text-base font-medium text-gray-900"
+                                            >
+                                              {size.name}
+                                            </RadioGroup.Label>
+                                            <RadioGroup.Description
+                                              as="p"
+                                              className="flex items-center mt-1 text-sm text-gray-500"
+                                            >
+                                              <GlobeAsiaAustraliaIcon
+                                                className="h-5 w-5 mr-2 text-appGreen"
+                                                aria-hidden="true"
+                                              />
+                                              {size.website}
+                                            </RadioGroup.Description>
+                                          </a>
+                                        </>
+                                    </RadioGroup.Option>
+                                  ))}
+                                </div>
+                              </RadioGroup>
+                            </div>
+                          </form>
+
+                         }
                       </section>
                     </div>
                   </div>
@@ -197,4 +171,4 @@ export default function TW({ isCollapse, clickHandler }: Props) {
       </Dialog>
     </Transition.Root>
   );
-}
+})
