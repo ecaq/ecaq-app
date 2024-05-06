@@ -18,9 +18,23 @@ export default class MemberStore {
 
     // this is Computed Property
     get getMembers() {
-    return Array.from(this.memberRegistry.values()).filter(
-        (i) => i.isActive === true
-    );
+      return Array.from(this.memberRegistry.values()).filter(
+          (i) => i.isActive === true
+      );
+    }
+    get getMembersByName() {
+      return Array.from(this.memberRegistry.values())
+        .filter(
+            (i) => i.isActive === true
+        ).sort((a, b) => {
+          if (a.memberName < b.memberName) {
+            return -1;
+          }
+          if (a.memberName > b.memberName) {
+            return 1;
+          }
+          return 0;
+        })
     }
     
     loadMembers = async () => {

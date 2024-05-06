@@ -27,7 +27,7 @@ import { observer } from "mobx-react-lite";
 
 export default observer(function SwiperSliderPerView() {
   const { memberStore } = useStore()
-  const { loadMembers, getMembers } = memberStore
+  const { loadMembers, getMembersByName } = memberStore
 
   useEffect(() => {
     loadMembers()
@@ -61,8 +61,8 @@ export default observer(function SwiperSliderPerView() {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        { getMembers &&
-          getMembers.map((member) => (
+        { getMembersByName &&
+          getMembersByName.map((member) => (
             <SwiperSlide key={member.memberName}>
               <div className="bg-white">
                 <div className="group mx-auto auto-rows-fr gap-8 lg:mx-0 lg:max-w-none h-72">
