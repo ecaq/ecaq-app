@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { useStore } from "../../app/stores/store";
 import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
 
 // type ButtonProps = {
@@ -24,7 +25,7 @@ import { useEffect } from "react";
 //   return <button onClick={() => swiper.slideNext()}>{children}</button>;
 // };
 
-export default function SwiperSliderPerView() {
+export default observer(function SwiperSliderPerView() {
   const { memberStore } = useStore()
   const { loadMembers, getMembers } = memberStore
 
@@ -56,11 +57,11 @@ export default function SwiperSliderPerView() {
           },
         }}
         navigation
-        pagination={{ clickable: true }}
+        // pagination={{ clickable: true }}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {
+        { getMembers &&
           getMembers.map((member) => (
             <SwiperSlide key={member.memberName}>
               <div className="bg-white">
@@ -90,4 +91,4 @@ export default function SwiperSliderPerView() {
       </Swiper>
     </>
   );
-}
+})
