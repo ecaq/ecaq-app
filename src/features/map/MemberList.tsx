@@ -1,13 +1,13 @@
 //import { useStore } from "../../app/stores/store"
-import { Member } from "../../app/models/member"
-import MemberItem from "./MemberItem"
+// import { MemberModel } from "../../app/models/member-model"
+// import MemberItem from "./MemberItem"
 import { observer } from "mobx-react-lite"
 
-interface Props {
-    members: Member[]
-}
+// interface Props {
+//     members: MemberModel[]
+// }
 
-export default observer(function MemberList({members}: Props) {
+export default observer(function MemberList() {
     // const {memberStore} = useStore()
     // const {members} = memberStore
 
@@ -15,9 +15,9 @@ export default observer(function MemberList({members}: Props) {
     return (
         <ul className={''}>
             {
-                members?.map(member => (
-                    <MemberItem member={member} key={member.id} />
-                ))
+                // members?.map(member => (
+                //     <MemberItem member={member} key={member.id} />
+                // ))
             }
         </ul>
     )

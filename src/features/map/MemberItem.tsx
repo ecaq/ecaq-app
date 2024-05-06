@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Member } from '../../app/models/member';
+// import { Link } from 'react-router-dom';
+// import { MemberModel } from '../../app/models/member-model';
 
 
 // const formatDate = (date: Date) =>
@@ -9,15 +9,15 @@ import { Member } from '../../app/models/member';
 //     year: "numeric",
 //   }).format(new Date(date));
 
-  interface Props {
-    member: Member
-  }
+  // interface Props {
+  //   member: MemberModel
+  // }
 
-export default function MemberItem({member}: Props) {
+export default function MemberItem() {
     //const {currentCity, deleteCity} = useCities()
     
-    // destructure the city props
-    const { cityName, id, position } = member
+    // // destructure the city props
+    // const { memberName, id, position } = member
 
     //${id === currentCity.id ? styles["cityItem--active"]:""}
     //styles.cityItem
@@ -29,9 +29,9 @@ export default function MemberItem({member}: Props) {
             <time className={''}>{formatDate(joinDate)}</time>
             <button className={''} onClick={handleDelete}>&times;</button>
           </Link> */}
-          <Link to={`${id}?lat=${position.lat}&lng=${position.lng}`} className="cursor-pointer flex items-center justify-between bg-appLightGray text-gray-800 text-lg rounded-lg  px-4 py-1 my-4 border-l-4 border-appGreen">
+
+          {/* <Link to={`${id}?lat=${position.lat}&lng=${position.lng}`} className="cursor-pointer flex items-center justify-between bg-appLightGray text-gray-800 text-lg rounded-lg  px-4 py-1 my-4 border-l-4 border-appGreen">
             <h3 className="flex-1">{cityName}</h3>
-            {/* <span className="mr-2 text-sm">{formatDate(joinDate)}</span> */}
             <button className="bg-black rounded-full w-5 h-5">
               <span className="">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -3 24 24" fill="currentColor" className="w-4 h-4">
@@ -39,7 +39,7 @@ export default function MemberItem({member}: Props) {
                 </svg>          
               </span>
             </button>
-          </Link>
+          </Link> */}
         </li>
     )
 }

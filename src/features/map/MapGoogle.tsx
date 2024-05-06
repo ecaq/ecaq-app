@@ -1,5 +1,5 @@
-import { GoogleMap, useLoadScript, Marker, Libraries } from "@react-google-maps/api";
-import { Member } from "../../app/models/member";
+import { GoogleMap, useLoadScript, Libraries } from "@react-google-maps/api";
+// import { MemberModel } from "../../app/models/member-model";
 import LoadingComponent from "../components/LoadingComponent";
 import { useMemo } from "react";
 
@@ -14,11 +14,11 @@ const containerStyle = {
 //     lng: 121.010
 //   };
 
-  interface Props {
-    members: Member[]
-}
+//   interface Props {
+//     members: MemberModel[]
+// }
 
-export default function MapGoogle({members}: Props) {
+export default function MapGoogle() {
   const { isLoaded, loadError } = useLoadScript({
     id: "google-map-script",
     googleMapsApiKey: import.meta.env.VITE_GOOGLEMAP_API,
@@ -54,11 +54,11 @@ if (loadError) {
       <>
       
         {/* <Marker position={center} /> */}
-        {members.length > 0 &&
+        {/* {members.length > 0 &&
             members?.map(member => (
                 <Marker position={member.position} />
             ))
-         }
+         } */}
       </>
     </GoogleMap>
   )
