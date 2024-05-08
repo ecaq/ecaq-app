@@ -17,6 +17,7 @@ const ContactUsVideo = lazy(
 const EcaqCore = lazy(() => import("../../features/about/EcaqCore"));
 const NotFound = lazy(() => import("../../features/errors/NotFound"));
 const ServerError = lazy(() => import("../../features/errors/ServerError"));
+const FundRaising = lazy(() => import("../../features/fund/FundRaising"));
 
 export const routes: RouteObject[] = [
   {
@@ -47,6 +48,10 @@ export const routes: RouteObject[] = [
         path: "/gallery",
         element: <Gallery />,
       },
+      {
+        path: "/fund-raising",
+        element: <FundRaising />,
+      },      
       {
         path: "/contact-us",
         element: <ContactUsVideo />,

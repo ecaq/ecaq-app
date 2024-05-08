@@ -6,6 +6,7 @@ import { EcaqCoreModel } from "../models/ecaq-core-model";
 import { GalleryModel } from "../models/gellery-model";
 import { AllianceModel } from "../models/alliance-model";
 import { MemberModel } from "../models/member-model";
+import { NewsModel } from "../models/news-model";
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -130,6 +131,15 @@ const Member = {
   // delete: (id: string) => axios.delete<void>(`/activities/${id}`)
 };
 
+const News = {
+  list: () => requests.get<NewsModel[]>("/news"),
+  details: (id: number) => requests.get<NewsModel>(`/news/${id}`),
+  // create: (activity: Activity) => requests.post<void>('/activities', activity),
+  // update: (activity: Activity) => requests.put<void>(`/activities/${activity.id}`, activity),
+  // //delete: (id: string) => axios.delete<void>(`/activities/${id}`)
+  // delete: (id: string) => axios.delete<void>(`/activities/${id}`)
+};
+
 const agent = {
   HomeBanners,
   About,
@@ -137,6 +147,7 @@ const agent = {
   Gallery,
   Alliance,
   Member,
+  News
 };
 
 export default agent;

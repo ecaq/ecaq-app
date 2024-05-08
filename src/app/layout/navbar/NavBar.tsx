@@ -302,6 +302,9 @@ export default function NavBar() {
           >
             News Update
           </NavLink>
+          <NavLink to="/fund-raising" className="text-md leading-6 text-gray-900">
+            Fund Raising
+          </NavLink>
           <NavLink to="/gallery" className="text-md leading-6 text-gray-900">
             Gallery
           </NavLink>
